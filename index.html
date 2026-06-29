@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Overview — Offline Bilingual Voice Robot Arm</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0d14; color: #e2e8f0; padding: 32px 24px; max-width: 1100px; margin: 0 auto; }
+
+/* ── header ── */
+.page-header { margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid #1e2535; }
+.page-header h1 { font-size: 1.55rem; font-weight: 800; color: #f8fafc; line-height: 1.3; }
+.page-header .meta { margin-top: 6px; font-size: 0.82rem; color: #64748b; }
+.tag { display: inline-block; background: #1e293b; border: 1px solid #334155; color: #94a3b8;
+       border-radius: 5px; padding: 2px 9px; font-size: 0.72rem; margin-right: 6px; margin-top: 4px; }
+
+/* ── section titles ── */
+h2 { font-size: 1rem; font-weight: 700; color: #f1f5f9; margin: 36px 0 14px;
+     display: flex; align-items: center; gap: 10px; }
+h2 .pill { font-size: 0.68rem; font-weight: 600; padding: 2px 10px; border-radius: 20px;
+           letter-spacing: .06em; text-transform: uppercase; }
+.pill-live   { background: #14532d; color: #4ade80; }
+.pill-bench  { background: #1e3a5f; color: #60a5fa; }
+.divider { flex: 1; height: 1px; background: #1e2535; }
+
+/* ── stat cards ── */
+.cards { display: grid; gap: 12px; margin-bottom: 4px; }
+.cards-5 { grid-template-columns: repeat(5, 1fr); }
+.cards-4 { grid-template-columns: repeat(4, 1fr); }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+@media(max-width:700px) { .cards-5,.cards-4,.cards-3 { grid-template-columns: repeat(2,1fr); } }
+.card { background: #111827; border: 1px solid #1e2535; border-radius: 12px; padding: 16px 18px; }
+.card .lbl { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .08em; color: #64748b; margin-bottom: 6px; }
+.card .val { font-size: 1.9rem; font-weight: 800; line-height: 1; }
+.card .sub { font-size: 0.75rem; color: #64748b; margin-top: 5px; }
+.g { color: #4ade80; } .b { color: #60a5fa; } .y { color: #facc15; }
+.r { color: #f87171; } .p { color: #c084fc; } .w { color: #e2e8f0; }
+
+/* ── category breakdown row ── */
+.cat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+.cat-block { background: #111827; border: 1px solid #1e2535; border-radius: 10px; padding: 14px 16px; }
+.cat-block .cat-label { font-size: 0.7rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 8px; }
+.cat-block .cat-score { font-size: 1.4rem; font-weight: 800; }
+.cat-block .cat-sub   { font-size: 0.72rem; color: #64748b; margin-top: 3px; }
+.bar { height: 5px; background: #1e2535; border-radius: 3px; margin-top: 10px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 3px; }
+
+/* ── benchmark table ── */
+.bench-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid #1e2535; margin-bottom: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.81rem; }
+thead th { background: #0d1117; color: #64748b; font-weight: 600; font-size: 0.68rem;
+           text-transform: uppercase; letter-spacing: .07em; padding: 10px 14px;
+           text-align: left; border-bottom: 1px solid #1e2535; white-space: nowrap; }
+thead th.right { text-align: right; }
+tbody tr { border-bottom: 1px solid #111827; transition: background .12s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #111827; }
+tbody td { padding: 10px 14px; vertical-align: middle; }
+tbody td.right { text-align: right; font-family: monospace; }
+.model-name { font-weight: 600; color: #f1f5f9; }
+.model-sub  { font-size: 0.7rem; color: #64748b; margin-top: 2px; }
+.champion   { background: rgba(74,222,128,.05) !important; }
+
+/* ── inline bar for table ── */
+.score-cell { display: flex; align-items: center; gap: 8px; }
+.score-num  { font-weight: 700; font-family: monospace; min-width: 42px; }
+.mini-bar   { flex: 1; height: 6px; background: #1e2535; border-radius: 3px; overflow: hidden; min-width: 60px; }
+.mini-fill  { height: 100%; border-radius: 3px; }
+
+/* ── badges ── */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
+.badge-win  { background: #14532d; color: #4ade80; }
+.badge-ok   { background: #1e3a5f; color: #60a5fa; }
+.badge-mid  { background: #3b2f10; color: #fbbf24; }
+.badge-low  { background: #2d1f1f; color: #f87171; }
+.badge-zero { background: #1a1a2e; color: #6366f1; }
+
+/* ── note boxes ── */
+.note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.note-box { background: #111827; border: 1px solid #1e2535; border-radius: 10px;
+            padding: 14px 16px; font-size: 0.8rem; color: #94a3b8; line-height: 1.65; }
+.note-box strong { color: #e2e8f0; }
+.note-box .note-title { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .07em;
+                         color: #64748b; margin-bottom: 6px; }
+
+/* ── footer ── */
+.footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid #1e2535;
+          font-size: 0.72rem; color: #475569; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<div class="page-header">
+  <h1>Offline Bilingual Voice-Controlled Robot Arm<br>with LLM Ambiguity Resolution</h1>
+  <div class="meta">
+    <span class="tag">KAIT — Kanagawa Institute of Technology</span>
+    <span class="tag">Jay (Intern) · June 2026</span>
+    <span class="tag">Qwen2.5 7B · YOLOv8s · ROS 2 Humble · Mac M3</span>
+    <span class="tag">Target: IEEE RO-MAN / SII / RA-L</span>
+  </div>
+</div>
+
+
+<!-- ══════════════ SECTION 1: C1 LIVE EXPERIMENT ══════════════ -->
+<h2>
+  C1 Live Experiment Results
+  <span class="pill pill-live">Live · Jun 29</span>
+  <span class="divider"></span>
+</h2>
+
+<!-- top summary -->
+<div class="cards cards-5" style="margin-bottom:16px;">
+  <div class="card">
+    <div class="lbl">Overall Accuracy</div>
+    <div class="val g">96.7%</div>
+    <div class="sub">29 / 30 trials</div>
+  </div>
+  <div class="card">
+    <div class="lbl">EXECUTE</div>
+    <div class="val g">100%</div>
+    <div class="sub">10 / 10</div>
+  </div>
+  <div class="card">
+    <div class="lbl">ASK (clarification)</div>
+    <div class="val b">100%</div>
+    <div class="sub">10 / 10 · all triggered</div>
+  </div>
+  <div class="card">
+    <div class="lbl">REJECT</div>
+    <div class="val y">90%</div>
+    <div class="sub">9 / 10 · C24 edge case</div>
+  </div>
+  <div class="card">
+    <div class="lbl">Avg Decision Latency</div>
+    <div class="val p">11.3 s</div>
+    <div class="sub">all 30 trials</div>
+  </div>
+</div>
+
+<!-- per-category bars -->
+<div class="cat-row">
+  <div class="cat-block">
+    <div class="cat-label g">EXECUTE — unambiguous commands</div>
+    <div class="cat-score g">10 / 10 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
+    <div class="cat-sub">avg 11.4 s &nbsp;·&nbsp; TH 5 + EN 5 &nbsp;·&nbsp; position-based commands</div>
+    <div class="bar"><div class="bar-fill" style="width:100%;background:#4ade80;"></div></div>
+  </div>
+  <div class="cat-block">
+    <div class="cat-label b">ASK — ambiguous commands</div>
+    <div class="cat-score b">10 / 10 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
+    <div class="cat-sub">avg 12.8 s &nbsp;·&nbsp; clarification loop triggered every case</div>
+    <div class="bar"><div class="bar-fill" style="width:100%;background:#60a5fa;"></div></div>
+  </div>
+  <div class="cat-block">
+    <div class="cat-label y">REJECT — invalid / out-of-scope</div>
+    <div class="cat-score y">9 / 10 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">90%</span></div>
+    <div class="cat-sub">avg 9.6 s &nbsp;·&nbsp; C24 "อะไรก็ได้" → ASK (see notes)</div>
+    <div class="bar"><div class="bar-fill" style="width:90%;background:#facc15;"></div></div>
+  </div>
+</div>
+
+<!-- language breakdown mini-cards -->
+<div class="cards cards-4" style="margin-bottom:4px;">
+  <div class="card" style="padding:12px 16px;">
+    <div class="lbl">Thai (TH)</div>
+    <div class="val" style="font-size:1.4rem;color:#86efac;">13/15</div>
+    <div class="sub">86.7% &nbsp;·&nbsp; 15 trials</div>
+  </div>
+  <div class="card" style="padding:12px 16px;">
+    <div class="lbl">English (EN)</div>
+    <div class="val" style="font-size:1.4rem;color:#93c5fd;">15/15</div>
+    <div class="sub">100% &nbsp;·&nbsp; 15 trials</div>
+  </div>
+  <div class="card" style="padding:12px 16px;">
+    <div class="lbl">Fastest Avg (REJECT)</div>
+    <div class="val" style="font-size:1.4rem;" class="y">9.6 s</div>
+    <div class="sub">short invalid commands</div>
+  </div>
+  <div class="card" style="padding:12px 16px;">
+    <div class="lbl">Slowest Avg (ASK)</div>
+    <div class="val" style="font-size:1.4rem;" class="p">12.8 s</div>
+    <div class="sub">includes TTS + clarify round-trip</div>
+  </div>
+</div>
+
+<!-- C1 notes -->
+<div class="note-grid" style="margin-top:12px;">
+  <div class="note-box">
+    <div class="note-title" style="color:#f87171;">Only Error — C24 "อะไรก็ได้"</div>
+    LLM classified as <strong>ASK</strong> (ambiguous target) instead of REJECT (invalid command).
+    The phrase "anything will do" was interpreted as under-specified rather than meaningless —
+    a philosophically reasonable failure mode worth discussing in the paper as an LLM boundary case.
+  </div>
+  <div class="note-box">
+    <div class="note-title" style="color:#60a5fa;">ASK Clarification Quality</div>
+    Position-based clarification (ซ้าย/ขวา, left/right) resolved <strong>5 / 10</strong> ASK cases to EXECUTE.
+    Color-based clarification failed on C12/C17/C18 — YOLO detects clear bottles as "white".
+    C11/C15/C20 hit <strong>NO_RESPONSE timeout</strong> — TTS_PLAY_DELAY 4 s too short for Thai TTS length.
+  </div>
+</div>
+
+
+<!-- ══════════════ SECTION 2: BENCHMARK — SIZE COMPARISON ══════════════ -->
+<h2>
+  LLM Benchmark — Model Size Comparison
+  <span class="pill pill-bench">Offline · Jun 24</span>
+  <span class="divider"></span>
+</h2>
+<p style="font-size:0.8rem;color:#64748b;margin-bottom:14px;">
+  30 prompts (EXECUTE / ASK / REJECT × TH / EN) · same prompt template · num_predict=150 · Ollama on Mac M3
+</p>
+
+<div class="bench-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Size</th>
+      <th>Overall</th>
+      <th>EXECUTE</th>
+      <th>ASK</th>
+      <th>REJECT</th>
+      <th class="right">TH</th>
+      <th class="right">EN</th>
+      <th class="right">Avg Lat</th>
+      <th>Verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="champion">
+      <td>
+        <div class="model-name">qwen2.5:7b</div>
+        <div class="model-sub">Alibaba — multilingual instruction-tuned</div>
+      </td>
+      <td>7B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num g">96.7%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:96.7%;background:#4ade80;"></div></div>
+        </div>
+      </td>
+      <td class="g" style="font-weight:700;">100%</td>
+      <td class="g" style="font-weight:700;">100%</td>
+      <td class="y" style="font-weight:700;">90%</td>
+      <td class="right g">93.3%</td>
+      <td class="right g">100%</td>
+      <td class="right">20.8 s</td>
+      <td><span class="badge badge-win">SELECTED</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">gemma3:4b</div>
+        <div class="model-sub">Google — general purpose</div>
+      </td>
+      <td>4B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num y">43.3%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:43.3%;background:#facc15;"></div></div>
+        </div>
+      </td>
+      <td class="y">30%</td>
+      <td class="g">100%</td>
+      <td class="r">0%</td>
+      <td class="right y">40.0%</td>
+      <td class="right y">46.7%</td>
+      <td class="right">16.9 s</td>
+      <td><span class="badge badge-mid">INSUFFICIENT</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">qwen2.5:3b</div>
+        <div class="model-sub">Alibaba — smaller variant</div>
+      </td>
+      <td>3B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num r">33.3%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:33.3%;background:#f87171;"></div></div>
+        </div>
+      </td>
+      <td class="r">0%</td>
+      <td class="g">100%</td>
+      <td class="r">0%</td>
+      <td class="right r">33.3%</td>
+      <td class="right r">33.3%</td>
+      <td class="right">10.5 s</td>
+      <td><span class="badge badge-low">INSUFFICIENT</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">phi3.5</div>
+        <div class="model-sub">Microsoft — compact</div>
+      </td>
+      <td>3.8B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num r">13.3%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:13.3%;background:#f87171;"></div></div>
+        </div>
+      </td>
+      <td class="r">10%</td>
+      <td class="r">30%</td>
+      <td class="r">0%</td>
+      <td class="right r">13.3%</td>
+      <td class="right r">13.3%</td>
+      <td class="right">18.5 s</td>
+      <td><span class="badge badge-low">INSUFFICIENT</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p style="font-size:0.74rem;color:#475569;margin-top:6px;">
+  Finding: ≥7B required for structured bilingual output. Smaller models (≤4B) fail EXECUTE and REJECT even when ASK is correct.
+</p>
+
+
+<!-- ══════════════ SECTION 3: BENCHMARK — CROSS-VENDOR 7B ══════════════ -->
+<h2>
+  LLM Benchmark — Cross-Vendor ≤7B Comparison
+  <span class="pill pill-bench">Offline · Jun 26</span>
+  <span class="divider"></span>
+</h2>
+<p style="font-size:0.8rem;color:#64748b;margin-bottom:14px;">
+  Same 30-prompt set · all models ≤7B · key question: does multilingual instruction-tuning matter more than architecture?
+</p>
+
+<div class="bench-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Vendor</th>
+      <th>Overall</th>
+      <th>EXECUTE</th>
+      <th>ASK</th>
+      <th>REJECT</th>
+      <th class="right">TH</th>
+      <th class="right">EN</th>
+      <th class="right">Avg Lat</th>
+      <th>Verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="champion">
+      <td>
+        <div class="model-name">qwen2.5:7b</div>
+        <div class="model-sub">Alibaba — strong multilingual tuning</div>
+      </td>
+      <td>Alibaba</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num g">96.7%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:96.7%;background:#4ade80;"></div></div>
+        </div>
+      </td>
+      <td class="g" style="font-weight:700;">100%</td>
+      <td class="g" style="font-weight:700;">100%</td>
+      <td class="y" style="font-weight:700;">90%</td>
+      <td class="right g">93.3%</td>
+      <td class="right g">100%</td>
+      <td class="right">11.2 s</td>
+      <td><span class="badge badge-win">BEST</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">mistral:7b</div>
+        <div class="model-sub">Mistral AI — European multilingual</div>
+      </td>
+      <td>Mistral</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num y">60.0%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:60%;background:#facc15;"></div></div>
+        </div>
+      </td>
+      <td class="y">30%</td>
+      <td class="g">100%</td>
+      <td class="y">50%</td>
+      <td class="right y">60.0%</td>
+      <td class="right y">60.0%</td>
+      <td class="right">13.9 s</td>
+      <td><span class="badge badge-mid">PARTIAL</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">internlm2:7b</div>
+        <div class="model-sub">Shanghai AI Lab — Chinese/multilingual</div>
+      </td>
+      <td>SAIL</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num y">50.0%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:50%;background:#facc15;"></div></div>
+        </div>
+      </td>
+      <td class="g">80%</td>
+      <td class="y">70%</td>
+      <td class="r">0%</td>
+      <td class="right r">40.0%</td>
+      <td class="right y">60.0%</td>
+      <td class="right">10.3 s</td>
+      <td><span class="badge badge-mid">PARTIAL</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">deepseek-r1:7b</div>
+        <div class="model-sub">DeepSeek — chain-of-thought reasoning model</div>
+      </td>
+      <td>DeepSeek</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num r">0.0%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:0%;background:#6366f1;"></div></div>
+        </div>
+      </td>
+      <td class="r">0%</td>
+      <td class="r">0%</td>
+      <td class="r">0%</td>
+      <td class="right r">0.0%</td>
+      <td class="right r">0.0%</td>
+      <td class="right">19.7 s</td>
+      <td><span class="badge badge-zero">INCOMPATIBLE</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note-grid" style="margin-top:12px;">
+  <div class="note-box">
+    <div class="note-title" style="color:#6366f1;">deepseek-r1:7b — 0% All Cases</div>
+    The model outputs <strong>&lt;think&gt;…&lt;/think&gt;</strong> reasoning tokens before answering.
+    These exhaust the <code>num_predict=150</code> budget before JSON is produced →
+    all 30 cases return NO_RESPONSE. Incompatible with fixed-token structured-output pipelines.
+    A documented limitation for the paper: CoT reasoning models need separate output budgets.
+  </div>
+  <div class="note-box">
+    <div class="note-title" style="color:#fbbf24;">Key Finding — Tuning &gt; Parameters</div>
+    All four models share the same ≤7B size class, yet accuracy spans <strong>0 – 96.7%</strong>.
+    Qwen2.5's Thai multilingual instruction-tuning explains the gap over Mistral and InternLM2.
+    Architecture and parameter count alone cannot predict performance for bilingual structured output.
+  </div>
+</div>
+
+
+<!-- ══════════════ SECTION 4: SUMMARY COMPARISON ══════════════ -->
+<h2>
+  Summary — Benchmark vs. Live Experiment
+  <span class="divider"></span>
+</h2>
+
+<div class="cards cards-3" style="margin-bottom:16px;">
+  <div class="card" style="border-color:#22c55e44;">
+    <div class="lbl">Offline Benchmark (Jun 24 + Jun 26)</div>
+    <div class="val g">96.7%</div>
+    <div class="sub">qwen2.5:7b · 30 prompts · no camera</div>
+  </div>
+  <div class="card" style="border-color:#22c55e44;">
+    <div class="lbl">C1 Live Experiment (Jun 29)</div>
+    <div class="val g">96.7%</div>
+    <div class="sub">real camera + YOLO + TTS + arm · 30 trials</div>
+  </div>
+  <div class="card" style="border-color:#60a5fa44;">
+    <div class="lbl">Benchmark → Live Δ</div>
+    <div class="val w">0.0%</div>
+    <div class="sub">benchmark accurately predicted live performance</div>
+  </div>
+</div>
+
+<div class="note-box" style="margin-bottom:4px;">
+  <div class="note-title" style="color:#4ade80;">Implication for the Paper</div>
+  The offline benchmark (Section V-C) is a reliable proxy for full-pipeline accuracy.
+  The single error in the live experiment (C24 "อะไรก็ได้" → ASK) is <strong>the same error pattern</strong>
+  seen in the benchmark (REJECT category 90%), confirming that the LLM's boundary between
+  "ambiguous" and "invalid" is consistent across evaluation modes.
+  End-to-end decision latency (avg 11.3 s) is dominated by LLM inference (≈9–10 s on Mac M3 via Ollama)
+  plus ROS pub/sub overhead — within acceptable range for lab pick-and-place tasks.
+</div>
+
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<div class="footer">
+  System: Qwen2.5 7B · Ollama · Mac M3 (Metal GPU) &nbsp;|&nbsp;
+  Vision: YOLOv8s + HSV 7-color · /dev/video2 · Ubuntu 22.04 ARM64 VM &nbsp;|&nbsp;
+  ROS 2 Humble · OpenMANIPULATOR-X (sim) &nbsp;|&nbsp;
+  STT: faster-whisper (th/en auto) · TTS: gTTS pre-generated cache &nbsp;|&nbsp;
+  Generated: June 29, 2026
+</div>
+
+</body>
+</html>
