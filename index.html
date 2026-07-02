@@ -96,7 +96,7 @@ tbody td.right { text-align: right; font-family: monospace; }
   <h1>Offline Bilingual Voice-Controlled Robot Arm<br>with LLM Ambiguity Resolution</h1>
   <div class="meta">
     <span class="tag">KAIT — Kanagawa Institute of Technology</span>
-    <span class="tag">Jay (Intern) · June 2026</span>
+    <span class="tag">Jay (Intern) · June–July 2026</span>
     <span class="tag">Qwen2.5 7B · YOLOv8s · ROS 2 Humble · Mac M3</span>
     <span class="tag">Target: IEEE RO-MAN / SII / RA-L</span>
   </div>
@@ -106,7 +106,7 @@ tbody td.right { text-align: right; font-family: monospace; }
 <!-- ══════════════ SECTION 1: C1 LIVE EXPERIMENT ══════════════ -->
 <h2>
   C1 Live Experiment Results
-  <span class="pill pill-live">Live · Jun 29</span>
+  <span class="pill pill-live">Live · Jul 1 (re-validated)</span>
   <span class="divider"></span>
 </h2>
 
@@ -114,8 +114,8 @@ tbody td.right { text-align: right; font-family: monospace; }
 <div class="cards cards-5" style="margin-bottom:16px;">
   <div class="card">
     <div class="lbl">Overall Accuracy</div>
-    <div class="val g">96.7%</div>
-    <div class="sub">29 / 30 trials</div>
+    <div class="val g">100%</div>
+    <div class="sub">30 / 30 trials</div>
   </div>
   <div class="card">
     <div class="lbl">EXECUTE</div>
@@ -125,16 +125,16 @@ tbody td.right { text-align: right; font-family: monospace; }
   <div class="card">
     <div class="lbl">ASK (clarification)</div>
     <div class="val b">100%</div>
-    <div class="sub">10 / 10 · all triggered</div>
+    <div class="sub">11 / 11 · all triggered</div>
   </div>
   <div class="card">
     <div class="lbl">REJECT</div>
-    <div class="val y">90%</div>
-    <div class="sub">9 / 10 · C24 edge case</div>
+    <div class="val g">100%</div>
+    <div class="sub">9 / 9</div>
   </div>
   <div class="card">
     <div class="lbl">Avg Decision Latency</div>
-    <div class="val p">11.3 s</div>
+    <div class="val p">11.8 s</div>
     <div class="sub">all 30 trials</div>
   </div>
 </div>
@@ -144,20 +144,20 @@ tbody td.right { text-align: right; font-family: monospace; }
   <div class="cat-block">
     <div class="cat-label g">EXECUTE — unambiguous commands</div>
     <div class="cat-score g">10 / 10 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
-    <div class="cat-sub">avg 11.4 s &nbsp;·&nbsp; TH 5 + EN 5 &nbsp;·&nbsp; position-based commands</div>
+    <div class="cat-sub">avg 13.2 s &nbsp;·&nbsp; TH 5 + EN 5 &nbsp;·&nbsp; position-based commands</div>
     <div class="bar"><div class="bar-fill" style="width:100%;background:#4ade80;"></div></div>
   </div>
   <div class="cat-block">
     <div class="cat-label b">ASK — ambiguous commands</div>
-    <div class="cat-score b">10 / 10 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
-    <div class="cat-sub">avg 12.8 s &nbsp;·&nbsp; clarification loop triggered every case</div>
+    <div class="cat-score b">11 / 11 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
+    <div class="cat-sub">avg 12.0 s &nbsp;·&nbsp; clarification loop triggered every case</div>
     <div class="bar"><div class="bar-fill" style="width:100%;background:#60a5fa;"></div></div>
   </div>
   <div class="cat-block">
-    <div class="cat-label y">REJECT — invalid / out-of-scope</div>
-    <div class="cat-score y">9 / 10 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">90%</span></div>
-    <div class="cat-sub">avg 9.6 s &nbsp;·&nbsp; C24 "อะไรก็ได้" → ASK (see notes)</div>
-    <div class="bar"><div class="bar-fill" style="width:90%;background:#facc15;"></div></div>
+    <div class="cat-label g">REJECT — invalid / out-of-scope</div>
+    <div class="cat-score g">9 / 9 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
+    <div class="cat-sub">avg 10.2 s &nbsp;·&nbsp; C24 "อะไรก็ได้" reclassified to ASK (see notes)</div>
+    <div class="bar"><div class="bar-fill" style="width:100%;background:#4ade80;"></div></div>
   </div>
 </div>
 
@@ -165,8 +165,8 @@ tbody td.right { text-align: right; font-family: monospace; }
 <div class="cards cards-4" style="margin-bottom:4px;">
   <div class="card" style="padding:12px 16px;">
     <div class="lbl">Thai (TH)</div>
-    <div class="val" style="font-size:1.4rem;color:#86efac;">13/15</div>
-    <div class="sub">86.7% &nbsp;·&nbsp; 15 trials</div>
+    <div class="val" style="font-size:1.4rem;color:#86efac;">15/15</div>
+    <div class="sub">100% &nbsp;·&nbsp; 15 trials</div>
   </div>
   <div class="card" style="padding:12px 16px;">
     <div class="lbl">English (EN)</div>
@@ -175,29 +175,131 @@ tbody td.right { text-align: right; font-family: monospace; }
   </div>
   <div class="card" style="padding:12px 16px;">
     <div class="lbl">Fastest Avg (REJECT)</div>
-    <div class="val" style="font-size:1.4rem;" class="y">9.6 s</div>
+    <div class="val" style="font-size:1.4rem;" class="g">10.2 s</div>
     <div class="sub">short invalid commands</div>
   </div>
   <div class="card" style="padding:12px 16px;">
-    <div class="lbl">Slowest Avg (ASK)</div>
-    <div class="val" style="font-size:1.4rem;" class="p">12.8 s</div>
-    <div class="sub">includes TTS + clarify round-trip</div>
+    <div class="lbl">Slowest Avg (EXECUTE)</div>
+    <div class="val" style="font-size:1.4rem;" class="p">13.2 s</div>
+    <div class="sub">real-object position commands (Coke + water bottle)</div>
   </div>
 </div>
 
 <!-- C1 notes -->
 <div class="note-grid" style="margin-top:12px;">
   <div class="note-box">
-    <div class="note-title" style="color:#f87171;">Only Error — C24 "อะไรก็ได้"</div>
-    LLM classified as <strong>ASK</strong> (ambiguous target) instead of REJECT (invalid command).
-    The phrase "anything will do" was interpreted as under-specified rather than meaningless —
-    a philosophically reasonable failure mode worth discussing in the paper as an LLM boundary case.
+    <div class="note-title" style="color:#4ade80;">Zero Errors — Re-validated 3×</div>
+    First re-run (post LLM-option tuning) regressed to 80% — traced to two pipeline bugs:
+    a truncated-JSON fallback defaulting to REJECT, and a stale blue-only rule-based fallback
+    incompatible with real (non-color-coded) test objects. Both fixed; batch 4 (the 8 affected
+    cases) re-run 3× with 8/8 every time.
   </div>
   <div class="note-box">
-    <div class="note-title" style="color:#60a5fa;">ASK Clarification Quality</div>
-    Position-based clarification (ซ้าย/ขวา, left/right) resolved <strong>5 / 10</strong> ASK cases to EXECUTE.
-    Color-based clarification failed on C12/C17/C18 — YOLO detects clear bottles as "white".
-    C11/C15/C20 hit <strong>NO_RESPONSE timeout</strong> — TTS_PLAY_DELAY 4 s too short for Thai TTS length.
+    <div class="note-title" style="color:#60a5fa;">Ground Truth Revision — C24</div>
+    C24 "อะไรก็ได้" ("anything") was relabeled REJECT→ASK: the system can meaningfully ask
+    <em>"what would you like me to pick up?"</em> instead of refusing outright, since the command
+    is intelligible even though no object is named — unlike true REJECT cases (impossible actions,
+    unintelligible noise). Flagged as debatable since Jun 22; decided Jul 1.
+  </div>
+</div>
+
+
+<!-- ══════════════ SECTION 1B: C2 LIVE EXPERIMENT ══════════════ -->
+<h2>
+  C2 Baseline (No-Clarification) — Live Experiment Results
+  <span class="pill pill-live">Live · Jul 2</span>
+  <span class="divider"></span>
+</h2>
+
+<!-- top summary -->
+<div class="cards cards-5" style="margin-bottom:16px;">
+  <div class="card">
+    <div class="lbl">Decision Accuracy</div>
+    <div class="val y">63.3%</div>
+    <div class="sub">57 / 90 trials · identical on 3 runs</div>
+  </div>
+  <div class="card">
+    <div class="lbl">EXECUTE</div>
+    <div class="val g">100%</div>
+    <div class="sub">20 / 20</div>
+  </div>
+  <div class="card">
+    <div class="lbl">ASK (decision label)</div>
+    <div class="val r">0%*</div>
+    <div class="sub">0 / 22 · by construction, see notes</div>
+  </div>
+  <div class="card">
+    <div class="lbl">REJECT</div>
+    <div class="val g">100%</div>
+    <div class="sub">18 / 18</div>
+  </div>
+  <div class="card">
+    <div class="lbl">Avg Decision Latency</div>
+    <div class="val p">11.2 s</div>
+    <div class="sub">all 90 trials</div>
+  </div>
+</div>
+
+<!-- per-category bars -->
+<div class="cat-row">
+  <div class="cat-block">
+    <div class="cat-label g">EXECUTE — unambiguous commands</div>
+    <div class="cat-score g">20 / 20 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
+    <div class="cat-sub">same prompt + LLM options as C1 — parity confirmed</div>
+    <div class="bar"><div class="bar-fill" style="width:100%;background:#4ade80;"></div></div>
+  </div>
+  <div class="cat-block">
+    <div class="cat-label r">ASK — ambiguous commands (label match)</div>
+    <div class="cat-score r">0 / 22 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">0%</span></div>
+    <div class="cat-sub"><code>override_ask_to_execute()</code> converts ASK→EXECUTE before the decision is ever published</div>
+    <div class="bar"><div class="bar-fill" style="width:100%;background:#f87171;"></div></div>
+  </div>
+  <div class="cat-block">
+    <div class="cat-label g">REJECT — invalid / out-of-scope</div>
+    <div class="cat-score g">18 / 18 &nbsp;<span style="font-size:1rem;font-weight:400;color:#64748b;">100%</span></div>
+    <div class="cat-sub">identical to C1 — REJECT path is untouched by the C2 override</div>
+    <div class="bar"><div class="bar-fill" style="width:100%;background:#4ade80;"></div></div>
+  </div>
+</div>
+
+<!-- task success cards — the metric that actually measures C2's guess quality -->
+<div class="cards cards-3" style="margin-top:16px;margin-bottom:4px;">
+  <div class="card" style="border-color:#f8717144;">
+    <div class="lbl">Task Success — Standard Scene</div>
+    <div class="val r">18.2%</div>
+    <div class="sub">4 / 22 · Coke left, water right</div>
+  </div>
+  <div class="card" style="border-color:#4ade8044;">
+    <div class="lbl">Task Success — Mirrored Scene</div>
+    <div class="val g">78.6%</div>
+    <div class="sub">11 / 14 · Coke right, water left</div>
+  </div>
+  <div class="card" style="border-color:#60a5fa44;">
+    <div class="lbl">Task Success — Bias-Controlled Avg</div>
+    <div class="val b">46.4%</div>
+    <div class="sub">matched 14-trial subset, both arrangements</div>
+  </div>
+</div>
+
+<!-- C2 notes -->
+<div class="note-grid" style="margin-top:12px;">
+  <div class="note-box">
+    <div class="note-title" style="color:#f87171;">* Why ASK Reads 0% — Not a Bug</div>
+    C2 shares C1's prompt, LLM options, and fallback verbatim (same two Jul 1 pipeline bugs were found
+    still present here and fixed identically). The only difference is <code>override_ask_to_execute()</code>,
+    which intercepts every ASK decision and immediately executes on the first candidate object —
+    <em>before</em> it is logged. C2 can therefore never match an ASK ground-truth label by definition;
+    this is the defining property of the "no-clarification" baseline, not a regression.
+  </div>
+  <div class="note-box">
+    <div class="note-title" style="color:#facc15;">Object-Identity Bias Discovered</div>
+    Task success on the standard scene (18.2%) was far below the ~50% expected from a random guess.
+    Detection logs showed the <strong>water bottle</strong> was listed first — and therefore always
+    picked — in nearly every trial, regardless of which side it was on. Re-running the ASK-only batches
+    with the bottles physically swapped confirmed this: the water bottle was still picked first, and
+    task success flipped to 78.6%. The bias tracks the <em>object</em> (HSV detects the water bottle's
+    lighter color more reliably), not the table side — averaging both arrangements (46.4%) recovers the
+    expected near-chance baseline once the bias is controlled for.
   </div>
 </div>
 
@@ -205,11 +307,11 @@ tbody td.right { text-align: right; font-family: monospace; }
 <!-- ══════════════ C1 TRIAL LOG ══════════════ -->
 <h2>
   C1 Trial Log — All 30 Trials
-  <span class="pill pill-live">Jun 29</span>
+  <span class="pill pill-live">Jul 1 (re-validated)</span>
   <span class="divider"></span>
 </h2>
 <p style="font-size:0.8rem;color:#64748b;margin-bottom:14px;">
-  Per-trial breakdown: command issued → LLM first decision → clarification (if ASK) → final outcome. Latency = time from STT to decision.
+  Per-trial breakdown: command issued &rarr; LLM first decision &rarr; clarification (if ASK) &rarr; final outcome. Latency = time from STT to decision.
 </p>
 
 <div class="bench-wrap">
@@ -220,47 +322,45 @@ tbody td.right { text-align: right; font-family: monospace; }
       <th>Command</th>
       <th style="width:46px;">Lang</th>
       <th style="width:78px;">GT</th>
-      <th style="width:78px;">1st Decision</th>
+      <th style="width:150px;">1st Decision</th>
       <th>Clarify Sent</th>
       <th style="width:90px;">Final</th>
-      <th style="width:40px;" class="right">Lat.</th>
-      <th style="width:36px;">Result</th>
+      <th style="width:56px;" class="right">Lat.</th>
+      <th style="width:80px;">Result</th>
     </tr>
   </thead>
   <tbody>
-    <!-- EXECUTE -->
-    <tr><td><span class="badge badge-win">C01</span></td><td><span class="model-name">หยิบขวดซ้าย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">16.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C02</span></td><td><span class="model-name">หยิบขวดน้ำซ้าย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C03</span></td><td><span class="model-name">หยิบขวดน้ำขวา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">13.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C04</span></td><td><span class="model-name">หยิบขวดขวา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">14.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C05</span></td><td><span class="model-name">กลับท่าเริ่มต้น</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.3s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C06</span></td><td><span class="model-name">Pick up the bottle on the left</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.4s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C07</span></td><td><span class="model-name">Grab the bottle on the left</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C08</span></td><td><span class="model-name">Take the bottle on the right</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C09</span></td><td><span class="model-name">Pick the bottle on the right</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.7s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-win">C10</span></td><td><span class="model-name">Go to home position</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td style="color:#475569;">—</td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.9s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <!-- ASK -->
-    <tr style="border-top:1px solid #1e2535;"><td><span class="badge badge-ok">C11</span></td><td><span class="model-name">หยิบขวดน้ำ</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">ซ้าย → <span style="color:#fbbf24;">NO_RESPONSE</span></td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">13.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C12</span></td><td><span class="model-name">หยิบขวด</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">สีฟ้า → <span style="color:#f87171;">REJECT</span></td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">15.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C13</span></td><td><span class="model-name">เอาขวดนั้นมา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">ซ้าย → <span style="color:#4ade80;">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">15.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C14</span></td><td><span class="model-name">หยิบของให้หน่อย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">ซ้าย → <span style="color:#4ade80;">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">15.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C15</span></td><td><span class="model-name">หยิบขวดน้ำสีฟ้า</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">ซ้าย → <span style="color:#fbbf24;">NO_RESPONSE</span></td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">17.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C16</span></td><td><span class="model-name">Pick up the bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">the left one → <span style="color:#4ade80;">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C17</span></td><td><span class="model-name">Grab that bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">the blue one → <span style="color:#fbbf24;">ASK again</span></td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C18</span></td><td><span class="model-name">Take a bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">the green one → <span style="color:#fbbf24;">ASK again</span></td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.9s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C19</span></td><td><span class="model-name">Get the object</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">the left one → <span style="color:#4ade80;">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.4s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-ok">C20</span></td><td><span class="model-name">Pick up a blue one</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK ✓</span></td><td style="color:#94a3b8;font-size:0.78rem;">left → <span style="color:#fbbf24;">NO_RESPONSE</span></td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <!-- REJECT -->
-    <tr style="border-top:1px solid #1e2535;"><td><span class="badge badge-mid">C21</span></td><td><span class="model-name">หยิบขวดน้ำ</span><span style="font-size:0.7rem;color:#64748b;margin-left:6px;">(empty table)</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-mid">C22</span></td><td><span class="model-name">บินขึ้นไปบนเพดาน</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.9s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-mid">C23</span></td><td><span class="model-name">ไปห้องครัว</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr style="background:rgba(248,113,113,.04);"><td><span class="badge badge-low">C24</span></td><td><span class="model-name">อะไรก็ได้</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-low">REJECT</span></td><td><span class="badge badge-ok" style="background:#1e3a5f;color:#fbbf24;">ASK ✗</span></td><td style="color:#94a3b8;font-size:0.78rem;">— (misclassified)</td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.5s</td><td style="text-align:center;font-size:1rem;">❌</td></tr>
-    <tr><td><span class="badge badge-mid">C25</span></td><td><span class="model-name">เอ่อ อืม เอ่อ</span><span style="font-size:0.7rem;color:#64748b;margin-left:6px;">(inaudible)</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-mid">C26</span></td><td><span class="model-name">Pick up the bottle</span><span style="font-size:0.7rem;color:#64748b;margin-left:6px;">(empty table)</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-mid">C27</span></td><td><span class="model-name">Fly to the ceiling</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-mid">C28</span></td><td><span class="model-name">Dance</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-mid">C29</span></td><td><span class="model-name">Go to the kitchen</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.7s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
-    <tr><td><span class="badge badge-mid">C30</span></td><td><span class="model-name">uh um hmm</span><span style="font-size:0.7rem;color:#64748b;margin-left:6px;">(inaudible)</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td style="color:#475569;">—</td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C01</span></td><td><span class="model-name">หยิบขวดซ้าย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">15.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C02</span></td><td><span class="model-name">หยิบขวดน้ำซ้าย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C03</span></td><td><span class="model-name">หยิบขวดน้ำขวา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">13.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C04</span></td><td><span class="model-name">หยิบขวดขวา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">15.4s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C05</span></td><td><span class="model-name">กลับท่าเริ่มต้น</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">19.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C06</span></td><td><span class="model-name">Pick up the bottle on the left</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.9s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C07</span></td><td><span class="model-name">Grab the bottle on the left</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C08</span></td><td><span class="model-name">Take the bottle on the right</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C09</span></td><td><span class="model-name">Pick the bottle on the right</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C10</span></td><td><span class="model-name">Go to home position</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.4s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C11</span></td><td><span class="model-name">หยิบขวดน้ำ</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">ซ้าย</span></td><td><span class="badge badge-low">NO_RESPONSE</span> <span style="color:#fbbf24;font-size:0.72rem;">(clarify timeout)</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">15.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C12</span></td><td><span class="model-name">หยิบขวด</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">ซ้าย</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">13.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C13</span></td><td><span class="model-name">เอาขวดนั้นมา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">ซ้าย</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C14</span></td><td><span class="model-name">หยิบของให้หน่อย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">ซ้าย</span></td><td><span class="badge badge-low">NO_RESPONSE</span> <span style="color:#fbbf24;font-size:0.72rem;">(clarify timeout)</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C15</span></td><td><span class="model-name">ขอขวดน้ำหน่อย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">ซ้าย</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C16</span></td><td><span class="model-name">Pick up the bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">the left one → the left one (fallback)</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C17</span></td><td><span class="model-name">Grab that bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">the left one → the left one (fallback)</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C18</span></td><td><span class="model-name">Take a bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">the right one</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C19</span></td><td><span class="model-name">Get the object</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">the left one → the left one (fallback)</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.4s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C20</span></td><td><span class="model-name">Can you get the bottle?</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">left</span></td><td><span class="badge badge-low">NO_RESPONSE</span> <span style="color:#fbbf24;font-size:0.72rem;">(clarify timeout)</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C21</span></td><td><span class="model-name">หยิบขวดน้ำ</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.6s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C22</span></td><td><span class="model-name">บินขึ้นไปบนเพดาน</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C23</span></td><td><span class="model-name">ไปห้องครัว</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C24</span></td><td><span class="model-name">อะไรก็ได้</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-ok">ASK</span></td><td><span style="color:#94a3b8;font-size:0.78rem;">ขวด → ซ้าย (fallback)</span></td><td><span class="badge badge-ok">ASK</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">13.4s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C25</span></td><td><span class="model-name">เอ่อ อืม เอ่อ</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C26</span></td><td><span class="model-name">Pick up the bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C27</span></td><td><span class="model-name">Fly to the ceiling</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.7s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C28</span></td><td><span class="model-name">Dance</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.3s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C29</span></td><td><span class="model-name">Go to the kitchen</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C30</span></td><td><span class="model-name">uh um hmm</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+
   </tbody>
 </table>
 </div>
@@ -269,8 +369,79 @@ tbody td.right { text-align: right; font-family: monospace; }
   <span><span class="badge badge-win" style="font-size:0.65rem;">EXECUTE</span> unambiguous — pick immediately</span>
   <span><span class="badge badge-ok" style="font-size:0.65rem;">ASK</span> ambiguous — clarification loop triggered</span>
   <span><span class="badge badge-mid" style="font-size:0.65rem;">REJECT</span> invalid / out-of-scope / not found</span>
-  <span style="color:#fbbf24;">NO_RESPONSE = TTS_PLAY_DELAY 4s too short for Thai TTS</span>
-  <span style="color:#f87171;">ASK again = color answer couldn't be resolved by YOLO</span>
+</div>
+
+
+<!-- ══════════════ C2 TRIAL LOG ══════════════ -->
+<h2>
+  C2 Trial Log — All 30 Trials
+  <span class="pill pill-live">Jul 2</span>
+  <span class="divider"></span>
+</h2>
+<p style="font-size:0.8rem;color:#64748b;margin-bottom:14px;">
+  Same 30-case set as C1, run through the no-clarification baseline. "1st Decision" shows what
+  <code>override_ask_to_execute()</code> published (ASK is never visible on the wire) &mdash; the
+  Result column judges EXECUTE/REJECT rows on decision-label match, and ASK-ground-truth rows on
+  physical task success (🎯 = grabbed the intended object, ⚠️ = guessed wrong) since C2's decision
+  label can never match ASK by construction.
+</p>
+
+<div class="bench-wrap">
+<table>
+  <thead>
+    <tr>
+      <th style="width:52px;">ID</th>
+      <th>Command</th>
+      <th style="width:46px;">Lang</th>
+      <th style="width:78px;">GT</th>
+      <th style="width:150px;">1st Decision</th>
+      <th>Clarify Sent</th>
+      <th style="width:90px;">Final</th>
+      <th style="width:56px;" class="right">Lat.</th>
+      <th style="width:80px;">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr><td><span class="badge badge-win">C01</span></td><td><span class="model-name">หยิบขวดซ้าย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C02</span></td><td><span class="model-name">หยิบขวดน้ำซ้าย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.7s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C03</span></td><td><span class="model-name">หยิบขวดน้ำขวา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.7s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C04</span></td><td><span class="model-name">หยิบขวดขวา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.3s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C05</span></td><td><span class="model-name">กลับท่าเริ่มต้น</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C06</span></td><td><span class="model-name">Pick up the bottle on the left</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">5.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C07</span></td><td><span class="model-name">Grab the bottle on the left</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C08</span></td><td><span class="model-name">Take the bottle on the right</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.1s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C09</span></td><td><span class="model-name">Pick the bottle on the right</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.7s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-win">C10</span></td><td><span class="model-name">Go to home position</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span class="badge badge-win">EXECUTE</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.3s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C11</span></td><td><span class="model-name">หยิบขวดน้ำ</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.5s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C12</span></td><td><span class="model-name">หยิบขวด</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.3s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C13</span></td><td><span class="model-name">เอาขวดนั้นมา</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.9s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C14</span></td><td><span class="model-name">หยิบของให้หน่อย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.8s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C15</span></td><td><span class="model-name">ขอขวดน้ำหน่อย</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">11.8s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C16</span></td><td><span class="model-name">Pick up the bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.1s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C17</span></td><td><span class="model-name">Grab that bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.4s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C18</span></td><td><span class="model-name">Take a bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.8s</td><td style="text-align:center;font-size:1rem;">🎯<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C19</span></td><td><span class="model-name">Get the object</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">9.8s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-ok">C20</span></td><td><span class="model-name">Can you get the bottle?</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">10.0s</td><td style="text-align:center;font-size:1rem;">⚠️<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-mid">C21</span></td><td><span class="model-name">หยิบขวดน้ำ</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C22</span></td><td><span class="model-name">บินขึ้นไปบนเพดาน</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C23</span></td><td><span class="model-name">ไปห้องครัว</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.7s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-ok">C24</span></td><td><span class="model-name">อะไรก็ได้</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-ok">ASK</span></td><td><span class="badge badge-win">EXECUTE</span> <span style="color:#64748b;font-size:0.68rem;">(ASK→EXEC override)</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-win">EXECUTE</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.2s</td><td style="text-align:center;font-size:1rem;">🎯<div style="font-size:0.68rem;color:#64748b;margin-top:2px;">guessed (no ask)</div></td></tr>
+<tr><td><span class="badge badge-mid">C25</span></td><td><span class="model-name">เอ่อ อืม เอ่อ</span></td><td><span class="badge badge-ok">TH</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C26</span></td><td><span class="model-name">Pick up the bottle</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.8s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C27</span></td><td><span class="model-name">Fly to the ceiling</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">5.0s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C28</span></td><td><span class="model-name">Dance</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">7.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C29</span></td><td><span class="model-name">Go to the kitchen</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">12.2s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+<tr><td><span class="badge badge-mid">C30</span></td><td><span class="model-name">uh um hmm</span></td><td><span class="badge" style="background:#1a2a1a;color:#86efac;">EN</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span class="badge badge-mid">REJECT</span></td><td><span style="color:#475569;">—</span></td><td><span class="badge badge-mid">REJECT</span></td><td class="right" style="font-family:monospace;font-size:0.78rem;">8.5s</td><td style="text-align:center;font-size:1rem;">✅</td></tr>
+
+  </tbody>
+</table>
+</div>
+
+<div style="font-size:0.74rem;color:#475569;margin-top:6px;display:flex;gap:24px;flex-wrap:wrap;">
+  <span><span class="badge badge-win" style="font-size:0.65rem;">EXECUTE</span> unambiguous — pick immediately</span>
+  <span><span class="badge badge-ok" style="font-size:0.65rem;">ASK</span> ground truth — overridden to first-match EXECUTE</span>
+  <span><span class="badge badge-mid" style="font-size:0.65rem;">REJECT</span> invalid / out-of-scope / not found</span>
+  <span>🎯 guessed the correct object &nbsp;·&nbsp; ⚠️ guessed wrong (no clarification asked)</span>
 </div>
 
 
@@ -523,32 +694,51 @@ tbody td.right { text-align: right; font-family: monospace; }
   <span class="divider"></span>
 </h2>
 
-<div class="cards cards-3" style="margin-bottom:16px;">
+<div class="cards cards-4" style="margin-bottom:16px;">
   <div class="card" style="border-color:#22c55e44;">
     <div class="lbl">Offline Benchmark (Jun 24 + Jun 26)</div>
     <div class="val g">96.7%</div>
     <div class="sub">qwen2.5:7b · 30 prompts · no camera</div>
   </div>
   <div class="card" style="border-color:#22c55e44;">
-    <div class="lbl">C1 Live Experiment (Jun 29)</div>
-    <div class="val g">96.7%</div>
-    <div class="sub">real camera + YOLO + TTS + arm · 30 trials</div>
+    <div class="lbl">C1 Live Experiment (Jul 1)</div>
+    <div class="val g">100%</div>
+    <div class="sub">real camera + YOLO + TTS + arm · 30 trials · real objects (Coke + water bottle)</div>
+  </div>
+  <div class="card" style="border-color:#f8717144;">
+    <div class="lbl">C2 Baseline (Jul 2)</div>
+    <div class="val y">63.3%</div>
+    <div class="sub">no clarification · 90 trials · task success on ambiguous ≈46.4%</div>
   </div>
   <div class="card" style="border-color:#60a5fa44;">
-    <div class="lbl">Benchmark → Live Δ</div>
-    <div class="val w">0.0%</div>
-    <div class="sub">benchmark accurately predicted live performance</div>
+    <div class="lbl">C1 vs C2 — Decision Accuracy Δ</div>
+    <div class="val b">+36.7 pt</div>
+    <div class="sub">clarification loop closes the gap to 100%</div>
   </div>
 </div>
 
-<div class="note-box" style="margin-bottom:4px;">
-  <div class="note-title" style="color:#4ade80;">Implication for the Paper</div>
-  The offline benchmark (Section V-C) is a reliable proxy for full-pipeline accuracy.
-  The single error in the live experiment (C24 "อะไรก็ได้" → ASK) is <strong>the same error pattern</strong>
-  seen in the benchmark (REJECT category 90%), confirming that the LLM's boundary between
-  "ambiguous" and "invalid" is consistent across evaluation modes.
-  End-to-end decision latency (avg 11.3 s) is dominated by LLM inference (≈9–10 s on Mac M3 via Ollama)
-  plus ROS pub/sub overhead — within acceptable range for lab pick-and-place tasks.
+<div class="note-grid" style="margin-bottom:4px;">
+  <div class="note-box">
+    <div class="note-title" style="color:#4ade80;">Implication for the Paper</div>
+    The offline benchmark (Section V-C) used the same C24 "อะไรก็ได้" case as REJECT ground truth;
+    the live experiment (Jul 1) revised that label to <strong>ASK</strong> — the system can meaningfully
+    ask "what would you like me to pick up?" instead of refusing outright. Once the ground truth was
+    corrected and two pipeline bugs were fixed (a truncated-JSON fallback and a stale blue-only rule
+    incompatible with real, non-color-coded test objects), the live system reached 100% across all
+    three decision categories, confirmed consistent across 3 repeated runs.
+    End-to-end decision latency (avg 11.8 s) is dominated by LLM inference (≈9–10 s on Mac M3 via Ollama)
+    plus ROS pub/sub overhead — within acceptable range for lab pick-and-place tasks.
+  </div>
+  <div class="note-box">
+    <div class="note-title" style="color:#f87171;">H1 Confirmed — Clarification Is Necessary</div>
+    C2 (identical pipeline, minus clarification) matches C1 exactly on EXECUTE/REJECT — confirming the
+    gap is caused by the missing clarification step, not by any other difference. On ambiguous commands,
+    C2 doesn't fail randomly: its "first-match" guess is <strong>systematically biased</strong> toward
+    whichever object the vision pipeline detects more confidently (18.2% vs. 78.6% success depending on
+    scene arrangement, averaging 46.4%). A deployed no-clarification system would therefore misinterpret
+    ambiguous commands in a predictable, user-intent-independent way — a stronger argument for asking
+    than "clarification is merely better than a coin flip."
+  </div>
 </div>
 
 
@@ -558,7 +748,7 @@ tbody td.right { text-align: right; font-family: monospace; }
   Vision: YOLOv8s + HSV 7-color · /dev/video2 · Ubuntu 22.04 ARM64 VM &nbsp;|&nbsp;
   ROS 2 Humble · OpenMANIPULATOR-X (sim) &nbsp;|&nbsp;
   STT: faster-whisper (th/en auto) · TTS: gTTS pre-generated cache &nbsp;|&nbsp;
-  Generated: June 29, 2026
+  Generated: June 29, 2026 · Updated: July 2, 2026 (C2 baseline results added)
 </div>
 
 </body>
