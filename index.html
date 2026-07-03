@@ -741,6 +741,21 @@ tbody td.right { text-align: right; font-family: monospace; }
   </div>
 </div>
 
+<div class="note-box" style="margin-top:12px;">
+  <div class="note-title" style="color:#60a5fa;">Pipeline Optimization (Jul 3, 2026) — Latency Figures Above Predate This</div>
+  After C1/C2 data collection, the harness and LLM-serving stack were tuned: skipping a redundant
+  30s arm-wait on REJECT trials, tightening the LLM timeout (120s &rarr; 60s+25s retry) with an
+  echo-based guard against stale decisions crossing trial boundaries, and enabling flash-attention +
+  8-bit KV-cache quantization on the Ollama server. The last change alone measured
+  <strong>~35% faster token generation</strong> (9.3 &rarr; 12.6 tok/s, like-for-like benchmark).
+  None of these touch decision logic, the system prompt, or parsing — a 5-case live smoke test across
+  EXECUTE/ASK/REJECT confirmed no accuracy regression. The <strong>11.8s (C1) / 11.2s (C2)</strong>
+  average latencies shown above were measured <em>before</em> this change, so future conditions
+  (C3/C4) collected under the faster configuration will not be directly latency-comparable without
+  accounting for it — decision-accuracy comparisons are unaffected. See
+  <code>docs/pipeline_optimization_plan.md</code> for full detail.
+</div>
+
 
 <!-- ══════════════ FOOTER ══════════════ -->
 <div class="footer">
@@ -748,7 +763,7 @@ tbody td.right { text-align: right; font-family: monospace; }
   Vision: YOLOv8s + HSV 7-color · /dev/video2 · Ubuntu 22.04 ARM64 VM &nbsp;|&nbsp;
   ROS 2 Humble · OpenMANIPULATOR-X (sim) &nbsp;|&nbsp;
   STT: faster-whisper (th/en auto) · TTS: gTTS pre-generated cache &nbsp;|&nbsp;
-  Generated: June 29, 2026 · Updated: July 2, 2026 (C2 baseline results added)
+  Generated: June 29, 2026 · Updated: July 3, 2026 (pipeline optimization note added)
 </div>
 
 </body>
