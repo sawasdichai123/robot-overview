@@ -1260,6 +1260,21 @@ tbody td.right { text-align: right; font-family: monospace; }
   <code>docs/pipeline_optimization_plan.md</code> for full detail.
 </div>
 
+<div class="note-box" style="margin-top:12px;border-color:#4ade8044;">
+  <div class="note-title" style="color:#4ade80;">Phase 2 Optimized Variant (Jul 7, 2026) — Validated, Not a Replacement for C1's Headline Number</div>
+  After all four conditions (C1–C4) were collected, <code>tts_response</code> was removed from the
+  JSON schema the LLM must produce (it was always discarded and rebuilt from a template regardless
+  of the model's output — see the Discussion's latency-bottleneck finding), <code>num_predict</code>
+  cut 150&rarr;80 accordingly, and Ollama's <code>format:'json'</code> enabled to guarantee valid
+  output. All 4 required validation steps passed: <code>SYSTEM_PROMPT</code> parity between C1/C2
+  re-confirmed identical, the 30-case offline benchmark scored <strong>100.0%</strong> (up from
+  96.7%), and a full live 30-trial C1 re-run scored <strong>100.0% (30/30) — identical to the
+  original C1 result</strong> — at <strong>9.43 s mean / 9.05 s median</strong> decision latency,
+  a <strong>20.1% reduction</strong> from the original 11.8 s. Reported here as a validated
+  efficiency improvement only: C2/C3/C4 were not re-collected under this schema, since the change
+  is decision-logic-neutral and doesn't affect any of the paper's accuracy-based conclusions (H1–H3).
+</div>
+
 
 <!-- ══════════════ FOOTER ══════════════ -->
 <div class="footer">
@@ -1267,7 +1282,7 @@ tbody td.right { text-align: right; font-family: monospace; }
   Vision: YOLOv8s + HSV 7-color · /dev/video2 · Ubuntu 22.04 ARM64 VM &nbsp;|&nbsp;
   ROS 2 Humble · OpenMANIPULATOR-X (sim) &nbsp;|&nbsp;
   STT: faster-whisper (th/en auto) · TTS: gTTS content-addressed cache (pre-warmed offline via <code>generate_tts_cache.py</code>) &nbsp;|&nbsp;
-  Generated: June 29, 2026 · Updated: July 7, 2026 (C4 no-vision ablation added — 80.0% decision accuracy, H3 confirmed; all 4 experiment conditions now complete)
+  Generated: June 29, 2026 · Updated: July 7, 2026 (C4 no-vision ablation added — 80.0% decision accuracy, H3 confirmed, all 4 conditions complete; Phase 2 optimized variant validated — 100% decision accuracy, 9.43s avg latency, −20.1%)
 </div>
 
 </body>
