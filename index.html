@@ -1056,6 +1056,136 @@ tbody td.right { text-align: right; font-family: monospace; }
 </div>
 
 
+<!-- ══════════════ SECTION 3.5: BENCHMARK — QWEN2.5 SIZE LADDER ══════════════ -->
+<h2>
+  LLM Benchmark — Qwen2.5 Size Ladder (Same Family)
+  <span class="pill pill-bench">Offline · Jul 10</span>
+  <span class="divider"></span>
+</h2>
+<p style="font-size:0.8rem;color:#64748b;margin-bottom:14px;">
+  Same 30-prompt set · <strong>single vendor/family (Qwen2.5)</strong> — removes the vendor confound of the Jun 24 table ·
+  run under Phase-2 schema (no tts_response · format:json · num_predict=80) + revised C24=ASK label — internally consistent, not row-comparable to the Jun 24/26 tables
+</p>
+
+<div class="bench-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Size</th>
+      <th>Overall</th>
+      <th>EXECUTE</th>
+      <th>ASK</th>
+      <th>REJECT</th>
+      <th class="right">TH</th>
+      <th class="right">EN</th>
+      <th class="right">Med Lat</th>
+      <th>Verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="model-name">qwen2.5:0.5b</div>
+        <div class="model-sub">Alibaba — smallest variant</div>
+      </td>
+      <td>0.5B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num r">36.7%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:36.7%;background:#f87171;"></div></div>
+        </div>
+      </td>
+      <td class="r">0%</td>
+      <td class="g">100%</td>
+      <td class="r">0%</td>
+      <td class="right r">40%</td>
+      <td class="right r">33%</td>
+      <td class="right">2.1 s</td>
+      <td><span class="badge badge-low">INSUFFICIENT</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">qwen2.5:1.5b</div>
+        <div class="model-sub">Alibaba — partial REJECT emerges</div>
+      </td>
+      <td>1.5B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num y">56.7%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:56.7%;background:#facc15;"></div></div>
+        </div>
+      </td>
+      <td class="r">0%</td>
+      <td class="g">100%</td>
+      <td class="y">67%</td>
+      <td class="right y">60%</td>
+      <td class="right y">53%</td>
+      <td class="right">3.3 s</td>
+      <td><span class="badge badge-mid">INSUFFICIENT</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="model-name">qwen2.5:3b</div>
+        <div class="model-sub">Alibaba — regresses vs 1.5b (REJECT 0%)</div>
+      </td>
+      <td>3B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num r">36.7%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:36.7%;background:#f87171;"></div></div>
+        </div>
+      </td>
+      <td class="r">0%</td>
+      <td class="g">100%</td>
+      <td class="r">0%</td>
+      <td class="right r">40%</td>
+      <td class="right r">33%</td>
+      <td class="right">4.5 s</td>
+      <td><span class="badge badge-low">INSUFFICIENT</span></td>
+    </tr>
+    <tr class="champion">
+      <td>
+        <div class="model-name">qwen2.5:7b</div>
+        <div class="model-sub">Alibaba — system model · all 3 states arrive together</div>
+      </td>
+      <td>7B</td>
+      <td>
+        <div class="score-cell">
+          <span class="score-num g">100%</span>
+          <div class="mini-bar"><div class="mini-fill" style="width:100%;background:#4ade80;"></div></div>
+        </div>
+      </td>
+      <td class="g" style="font-weight:700;">100%</td>
+      <td class="g" style="font-weight:700;">100%</td>
+      <td class="g" style="font-weight:700;">100%</td>
+      <td class="right g">100%</td>
+      <td class="right g">100%</td>
+      <td class="right">12.0 s</td>
+      <td><span class="badge badge-win">THRESHOLD</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note-grid" style="margin-top:12px;">
+  <div class="note-box">
+    <div class="note-title" style="color:#f87171;">Over-Ask Collapse Below 7B — Whole Family</div>
+    Every sub-7B size scores <strong>EXECUTE 0%</strong> — even fully-specified commands
+    ("pick up the bottle on the left") still get ASK, and 0.5b / 3b fail the <em>identical</em>
+    19 cases. Within one family (same tokenizer, same training recipe), parameter count alone
+    reproduces the over-ask bias seen across vendors on Jun 24 — the vendor confound is eliminated.
+  </div>
+  <div class="note-box">
+    <div class="note-title" style="color:#a78bfa;">Non-Monotonic — Emergent, Not Smooth Scaling</div>
+    1.5b (56.7%) <strong>beats</strong> 3b (36.7%): its REJECT partially emerges (67% — refuses
+    "fly to the ceiling" / "dance" / noise) while 3b's is 0%. Capability below 7B is unstable and
+    non-monotonic, then all three decision states arrive together at 7B (100% in every category,
+    both languages) — evidence of a capability threshold, not gradual improvement.
+  </div>
+</div>
+
+
 <!-- ══════════════ SECTION 4: SUMMARY COMPARISON ══════════════ -->
 <h2>
   Summary — Benchmark vs. Live Experiment
