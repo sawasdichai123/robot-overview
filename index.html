@@ -813,120 +813,9 @@ tbody td.right { text-align: right; font-family: monospace; }
 </div>
 
 
-<!-- ══════════════ SECTION 2: BENCHMARK — SIZE COMPARISON ══════════════ -->
-<h2>
-  LLM Benchmark — Model Size Comparison
-  <span class="pill pill-bench">Offline · Jun 24</span>
-  <span class="divider"></span>
-</h2>
-<p style="font-size:0.8rem;color:#64748b;margin-bottom:14px;">
-  30 prompts (EXECUTE / ASK / REJECT × TH / EN) · same prompt template · num_predict=150 · Ollama on Mac M3
-</p>
-
-<div class="bench-wrap">
-<table>
-  <thead>
-    <tr>
-      <th>Model</th>
-      <th>Size</th>
-      <th>Overall</th>
-      <th>EXECUTE</th>
-      <th>ASK</th>
-      <th>REJECT</th>
-      <th class="right">TH</th>
-      <th class="right">EN</th>
-      <th class="right">Avg Lat</th>
-      <th>Verdict</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="champion">
-      <td>
-        <div class="model-name">qwen2.5:7b</div>
-        <div class="model-sub">Alibaba — multilingual instruction-tuned</div>
-      </td>
-      <td>7B</td>
-      <td>
-        <div class="score-cell">
-          <span class="score-num g">96.7%</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:96.7%;background:#4ade80;"></div></div>
-        </div>
-      </td>
-      <td class="g" style="font-weight:700;">100%</td>
-      <td class="g" style="font-weight:700;">100%</td>
-      <td class="y" style="font-weight:700;">90%</td>
-      <td class="right g">93.3%</td>
-      <td class="right g">100%</td>
-      <td class="right">20.8 s</td>
-      <td><span class="badge badge-win">SELECTED</span></td>
-    </tr>
-    <tr>
-      <td>
-        <div class="model-name">gemma3:4b</div>
-        <div class="model-sub">Google — general purpose</div>
-      </td>
-      <td>4B</td>
-      <td>
-        <div class="score-cell">
-          <span class="score-num y">43.3%</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:43.3%;background:#facc15;"></div></div>
-        </div>
-      </td>
-      <td class="y">30%</td>
-      <td class="g">100%</td>
-      <td class="r">0%</td>
-      <td class="right y">40.0%</td>
-      <td class="right y">46.7%</td>
-      <td class="right">16.9 s</td>
-      <td><span class="badge badge-mid">INSUFFICIENT</span></td>
-    </tr>
-    <tr>
-      <td>
-        <div class="model-name">qwen2.5:3b</div>
-        <div class="model-sub">Alibaba — smaller variant</div>
-      </td>
-      <td>3B</td>
-      <td>
-        <div class="score-cell">
-          <span class="score-num r">33.3%</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:33.3%;background:#f87171;"></div></div>
-        </div>
-      </td>
-      <td class="r">0%</td>
-      <td class="g">100%</td>
-      <td class="r">0%</td>
-      <td class="right r">33.3%</td>
-      <td class="right r">33.3%</td>
-      <td class="right">10.5 s</td>
-      <td><span class="badge badge-low">INSUFFICIENT</span></td>
-    </tr>
-    <tr>
-      <td>
-        <div class="model-name">phi3.5</div>
-        <div class="model-sub">Microsoft — compact</div>
-      </td>
-      <td>3.8B</td>
-      <td>
-        <div class="score-cell">
-          <span class="score-num r">13.3%</span>
-          <div class="mini-bar"><div class="mini-fill" style="width:13.3%;background:#f87171;"></div></div>
-        </div>
-      </td>
-      <td class="r">10%</td>
-      <td class="r">30%</td>
-      <td class="r">0%</td>
-      <td class="right r">13.3%</td>
-      <td class="right r">13.3%</td>
-      <td class="right">18.5 s</td>
-      <td><span class="badge badge-low">INSUFFICIENT</span></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<p style="font-size:0.74rem;color:#475569;margin-top:6px;">
-  Finding: ≥7B required for structured bilingual output. Smaller models (≤4B) fail EXECUTE and REJECT even when ASK is correct.
-</p>
-
+<!-- SECTION 2 (Jun 24 mixed-vendor size comparison) removed Jul 10 —
+     superseded by the Qwen2.5 Size Ladder below (vendor confound on the size axis);
+     raw data remains in results/benchmark_jun24_small_models_* -->
 
 <!-- ══════════════ SECTION 3: BENCHMARK — CROSS-VENDOR 7B ══════════════ -->
 <h2>
@@ -1063,8 +952,8 @@ tbody td.right { text-align: right; font-family: monospace; }
   <span class="divider"></span>
 </h2>
 <p style="font-size:0.8rem;color:#64748b;margin-bottom:14px;">
-  Same 30-prompt set · <strong>single vendor/family (Qwen2.5)</strong> — removes the vendor confound of the Jun 24 table ·
-  run under Phase-2 schema (no tts_response · format:json · num_predict=80) + revised C24=ASK label — internally consistent, not row-comparable to the Jun 24/26 tables
+  Same 30-prompt set · <strong>single vendor/family (Qwen2.5)</strong> — isolates the size axis with no vendor confound (supersedes the retired Jun 24 mixed-vendor table) ·
+  run under Phase-2 schema (no tts_response · format:json · num_predict=80) + revised C24=ASK label — internally consistent, not row-comparable to the Jun 26 table
 </p>
 
 <div class="bench-wrap">
@@ -1174,7 +1063,7 @@ tbody td.right { text-align: right; font-family: monospace; }
     Every sub-7B size scores <strong>EXECUTE 0%</strong> — even fully-specified commands
     ("pick up the bottle on the left") still get ASK, and 0.5b / 3b fail the <em>identical</em>
     19 cases. Within one family (same tokenizer, same training recipe), parameter count alone
-    reproduces the over-ask bias seen across vendors on Jun 24 — the vendor confound is eliminated.
+    reproduces the over-ask bias — size is the isolated variable, vendor confound eliminated.
   </div>
   <div class="note-box">
     <div class="note-title" style="color:#a78bfa;">Non-Monotonic — Emergent, Not Smooth Scaling</div>
@@ -1194,7 +1083,7 @@ tbody td.right { text-align: right; font-family: monospace; }
 
 <div class="cards cards-5" style="margin-bottom:16px;">
   <div class="card" style="border-color:#22c55e44;">
-    <div class="lbl">Offline Benchmark (Jun 24 + Jun 26)</div>
+    <div class="lbl">Offline Benchmark (Jun 26 cross-vendor)</div>
     <div class="val g">96.7%</div>
     <div class="sub">qwen2.5:7b · 30 prompts · no camera</div>
   </div>
